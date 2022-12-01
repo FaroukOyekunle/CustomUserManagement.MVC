@@ -22,8 +22,8 @@ namespace UserManagement.MVC.Data
             //Seed Default User
             var defaultUser = new ApplicationUser
             {
-                UserName = "superadmin",
-                Email = "superadmin@gmail.com",
+                UserName = "@umarfarouk",
+                Email = "umarfarouk@gmail.com",
                 FirstName = "Farouk",
                 LastName = "Oyekunle",
                 EmailConfirmed = true,
@@ -32,9 +32,9 @@ namespace UserManagement.MVC.Data
             if (userManager.Users.All(u => u.Id != defaultUser.Id))
             {
                 var user = await userManager.FindByEmailAsync(defaultUser.Email);
-                if (user == null)
+                if (user is null)
                 {
-                    await userManager.CreateAsync(defaultUser, "123Pa$$word.");
+                    await userManager.CreateAsync(defaultUser, "@FaroukOyekunle.");
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Basic.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Moderator.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Admin.ToString());
