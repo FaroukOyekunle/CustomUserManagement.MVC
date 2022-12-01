@@ -39,7 +39,7 @@ namespace UserManagement.MVC.Controllers
         {
             ViewBag.userId = userId;
             var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
+            if (user is null)
             {
                 ViewBag.ErrorMessage = $"User with Id = {userId} cannot be found";
                 return View("NotFound");
@@ -69,7 +69,7 @@ namespace UserManagement.MVC.Controllers
         public async Task<IActionResult> Manage(List<ManageUserRolesViewModel> model, string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
+            if (user is null)
             {
                 return View();
             }
